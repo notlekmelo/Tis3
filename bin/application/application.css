@@ -1,0 +1,9 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#ImageView:small-device {
+	-fx-padding: 30	15
+}
+
+#ImageView:large-device{
+	-fx-padding: 80 40
+}

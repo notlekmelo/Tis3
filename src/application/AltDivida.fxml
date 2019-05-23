@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AltDividaController">
+	<!-- TODO Add Nodes -->
+	<children>
+      <Pane prefHeight="1000.0" prefWidth="1900.0" style="-fx-background-color: #b2222d;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="339.0" fitWidth="519.0" layoutX="727.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="492.0" fitWidth="652.0" layoutX="633.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../R.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="1552.0" layoutY="873.0" mnemonicParsing="false" onMouseClicked="#atualizarDivida" prefHeight="54.0" prefWidth="237.0" text="Atualizar">
+               <font>
+                  <Font size="25.0" />
+               </font></Button>
+            <Label layoutX="166.0" layoutY="526.0" prefHeight="47.0" prefWidth="83.0" text="Valor: R$" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <TextField fx:id="value" editable="false" layoutX="295.0" layoutY="529.0">
+               <font>
+                  <Font size="19.0" />
+               </font></TextField>
+            <Label layoutX="166.0" layoutY="774.0" text="Tipo de acordo:" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="166.0" layoutY="592.0" prefHeight="47.0" prefWidth="83.0" text="Devedor: " textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="166.0" layoutY="662.0" text="Cliente: " textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <TextField fx:id="dev" editable="false" layoutX="295.0" layoutY="594.0">
+               <font>
+                  <Font size="19.0" />
+               </font></TextField>
+            <TextField fx:id="cli" editable="false" layoutX="295.0" layoutY="655.0" prefHeight="42.0" prefWidth="237.0">
+               <font>
+                  <Font size="19.0" />
+               </font></TextField>
+            <TextField fx:id="func" layoutX="295.0" layoutY="717.0">
+               <font>
+                  <Font size="19.0" />
+               </font></TextField>
+            <Label layoutX="166.0" layoutY="724.0" text="Responsável:" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="596.0" layoutY="533.0" text="Forma de pagamento:" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <Label layoutX="598.0" layoutY="598.0" text="Nº de parcelas restantes:" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font></Label>
+            <TextField fx:id="numParc" layoutX="817.0" layoutY="600.0" prefHeight="31.0" prefWidth="64.0" />
+            <Button layoutX="166.0" layoutY="900.0" mnemonicParsing="false" onMouseClicked="#setValores" prefHeight="54.0" prefWidth="219.0" text="Mostrar valores">
+               <font>
+                  <Font size="25.0" />
+               </font></Button>
+            <TextArea fx:id="tipo" editable="false" layoutX="166.0" layoutY="820.0" prefHeight="31.0" prefWidth="380.0" />
+            <TextArea fx:id="hist" editable="false" layoutX="1177.0" layoutY="526.0" prefHeight="214.0" prefWidth="612.0" />
+            <Label layoutX="1074.0" layoutY="533.0" text="Histórico:" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="forma" editable="false" layoutX="817.0" layoutY="526.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="Valpay" editable="false" layoutX="817.0" layoutY="655.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </TextField>
+            <Label layoutX="597.0" layoutY="662.0" text="Valor restante da parcela:" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Button layoutX="806.0" layoutY="833.0" mnemonicParsing="false" onMouseClicked="#savePay" prefHeight="54.0" prefWidth="237.0" text="Pagamento Total">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <TextArea fx:id="histEdit" layoutX="1177.0" layoutY="760.0" prefHeight="85.0" prefWidth="612.0" promptText="Digite aqui a atualização do histórico" />
+            <Label layoutX="596.0" layoutY="724.0" text="Data próxima parcela:" textFill="WHITE">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <TextField fx:id="data" editable="false" layoutX="817.0" layoutY="719.0" prefHeight="42.0" prefWidth="237.0" />
+            <Button layoutX="807.0" layoutY="900.0" mnemonicParsing="false" onMouseClicked="#payParc" prefHeight="54.0" prefWidth="237.0" text="Pagamento Parcial">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

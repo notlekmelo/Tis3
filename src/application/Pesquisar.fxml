@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="28.0" prefWidth="0.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PesquisarController">
+   <children>
+      <Pane prefHeight="1000.0" prefWidth="1900.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <ImageView fitHeight="86.0" fitWidth="83.0" layoutX="46.0" layoutY="20.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../seta.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="search" layoutX="513.0" layoutY="103.0" onKeyPressed="#enter" prefHeight="51.0" prefWidth="745.0" />
+            <TextField fx:id="search1" layoutX="513.0" layoutY="184.0" prefHeight="51.0" prefWidth="745.0" promptText="Digite aqui o Devedor" visible="false" />
+            <Button layoutX="1370.0" layoutY="103.0" mnemonicParsing="false" onMouseClicked="#clique" prefHeight="51.0" prefWidth="145.0" text="Pesquisar">
+               <font>
+                  <Font size="21.0" />
+               </font></Button>
+            <Button fx:id="buscar" alignment="TOP_LEFT" layoutX="511.0" layoutY="449.0" mnemonicParsing="false" onMouseClicked="#selecionar" prefHeight="51.0" prefWidth="1007.0" visible="false">
+               <font>
+                  <Font size="24.0" />
+               </font></Button>
+            <RadioButton fx:id="cli" layoutX="724.0" layoutY="307.0" mnemonicParsing="false" onMouseClicked="#hide" prefHeight="30.0" prefWidth="92.0" text="Cliente">
+               <toggleGroup>
+                  <ToggleGroup fx:id="qualPesq" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="dev" layoutX="954.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#hide" prefHeight="30.0" prefWidth="92.0" text="Devedor" toggleGroup="$qualPesq" />
+            <RadioButton fx:id="divida" layoutX="1165.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#show" prefHeight="30.0" prefWidth="92.0" text="Dívida" toggleGroup="$qualPesq" />
+            <RadioButton fx:id="nome" layoutX="724.0" layoutY="362.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="92.0" text="Nome" toggleGroup="$peloQue">
+               <toggleGroup>
+                  <ToggleGroup fx:id="peloQue" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="ident" layoutX="954.0" layoutY="366.0" mnemonicParsing="false" text="CPF/CNPJ" toggleGroup="$peloQue" />
+            <Label layoutX="513.0" layoutY="292.0" prefHeight="51.0" prefWidth="195.0" text="Deseja pesquisar por: ">
+               <font>
+                  <Font size="18.0" />
+               </font></Label>
+            <Label layoutX="513.0" layoutY="351.0" prefHeight="51.0" prefWidth="195.0" text="Pesquisar Utilizando:">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
+            <ImageView fitHeight="203.0" fitWidth="483.0" layoutX="1403.0" layoutY="782.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Russi_e_Pereira_Sociedade_de_Advogados.png" />
+               </image>
+            </ImageView>
+            <TextArea fx:id="encontrados" editable="false" layoutX="511.0" layoutY="512.0" prefHeight="262.0" prefWidth="1007.0" />
+            <RadioButton fx:id="data" layoutX="1165.0" layoutY="358.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="176.0" text="Data do vencimento:" toggleGroup="$peloQue" visible="false" />
+            <RadioButton fx:id="value" layoutX="954.0" layoutY="413.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" text="Valor:" toggleGroup="$peloQue" visible="false" />
+            <RadioButton fx:id="identificador" layoutX="724.0" layoutY="413.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="129.0" text="Identificador:" toggleGroup="$peloQue" />
+            <TextField fx:id="dia" layoutX="1349.0" layoutY="358.0" prefHeight="31.0" prefWidth="59.0" promptText="dd" visible="false" />
+            <TextField fx:id="mes" layoutX="1413.0" layoutY="358.0" prefHeight="31.0" prefWidth="59.0" promptText="mm" visible="false" />
+            <TextField fx:id="ano" layoutX="1479.0" layoutY="358.0" prefHeight="31.0" prefWidth="59.0" promptText="aaaa" visible="false" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
