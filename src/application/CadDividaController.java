@@ -107,7 +107,7 @@ public class CadDividaController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		numParc.setOnKeyPressed(new EventHandler<Event>() {
+		numParc.setOnKeyTyped(new EventHandler<Event>() {
 			@Override  
 			public void handle(Event e) {
 				if(numParc.getText().length()>0) {
@@ -134,7 +134,11 @@ public class CadDividaController implements Initializable {
 						dataParc.setPromptText("dd/mm/aaaa");
 						dataParc.setPrefWidth(164);
 						dataParc.setPrefHeight(31);
+						try {
 						valParc.setText("" + (Float.parseFloat(value.getText())/Float.parseFloat(numParc.getText())));
+						}catch(NumberFormatException erro) {
+							valParc.setText("");
+					}
 						if(i>16) {
 							data.setLayoutX(1532);
 							data.setLayoutY(81 + ((i-17)*52));
