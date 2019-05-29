@@ -20,12 +20,9 @@ public class test {
 //					System.out.println(lista.get(i) + "\t" + lista2.get(j) + "\n\n");
 //				}
 //			}
-			ArrayList<String> lista = bd.listarDividaCruzada("identidadeCli","identidadeDev","aab", "88454");
-			for (int i = 0; i < lista.size(); i++) {
-				System.out.println(lista.get(i));
+			bd.gerarPdfCli("1");
 			}
 		}
 
 	}
 
-}

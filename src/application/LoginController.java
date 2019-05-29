@@ -18,7 +18,7 @@ public class LoginController {
 
 	@FXML
 	private void verifyLog() {
-		// Abrir Banco de dados e verificar.
+//		 Abrir Banco de dados e verificar.
 		BancoDeDados bd = new BancoDeDados();
 		bd.conectar();
 		if (bd.estaConectado()) {

@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class OpcoesPesqController {
 	static Stage s2;
 	static String tipo;
-	
+
 	public void inicio(String tipo) throws IOException {
 		OpcoesPesqController.tipo = tipo;
 		s2 = new Stage();
@@ -22,33 +22,41 @@ public class OpcoesPesqController {
 		s2.setResizable(false);
 		s2.show();
 	}
-	
+
 	@FXML
-    private void alterar(MouseEvent event) throws IOException {
-		if(tipo.equals("divida")) {
+	private void alterar(MouseEvent event) throws IOException {
+		if (tipo.equals("divida")) {
 			AltDividaController nova = new AltDividaController();
 			nova.inicio();
-		}
-		else {
-		AltEntController nova = new AltEntController();
-		nova.inicio(tipo);
+		} else {
+			AltEntController nova = new AltEntController();
+			nova.inicio(tipo);
 		}
 		s2.close();
-    }
+	}
 
-    @FXML
-    private void listar(MouseEvent event) {
+	@FXML
+	private void listar(MouseEvent event) {
 
-    }
+	}
 
-    @FXML
-    private void relatar(MouseEvent event) {
+	@FXML
+	private void relatar(MouseEvent event) {
+		BancoDeDados bd = new BancoDeDados();
+		bd.conectar();
+		if (bd.estaConectado()) {
+			if (tipo.equals("divida"))
+				bd.gerarPdfDiv(bd.getInfDiv("iddivida", "iddivida"));
+			else if (tipo.equals("devedor"))
+				bd.gerarPdfDev(bd.getInfDev("idDev", "idDev"));
+			else if (tipo.equals("cliente"))
+				bd.gerarPdfCli(bd.getInfCli("idCli", "idCli"));
+		}
+	}
 
-    }
+	@FXML
+	private void exit(MouseEvent e) {
+		s2.close();
+	}
 
-    @FXML
-    private void exit(MouseEvent e) {
-    	s2.close();
-    }
-    
 }
