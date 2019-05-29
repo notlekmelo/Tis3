@@ -2,6 +2,8 @@ package application;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -52,6 +54,8 @@ public class OpcoesPesqController {
 			else if (tipo.equals("cliente"))
 				bd.gerarPdfCli(bd.getInfCli("idCli", "idCli"));
 		}
+		JOptionPane.showMessageDialog(null, "Relatório gerado em sua área de trabalho");
+		s2.close();
 	}
 
 	@FXML
