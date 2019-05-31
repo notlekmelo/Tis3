@@ -14,7 +14,7 @@
             <Button layoutX="1168.0" layoutY="664.0" mnemonicParsing="false" onMouseClicked="#delUser" prefHeight="101.0" prefWidth="422.0" text="Deletar um usuário" />
             <ImageView fitHeight="444.0" fitWidth="551.0" layoutX="686.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../R.png" />
+                  <Image url="@R.png" />
                </image>
             </ImageView>
          </children>

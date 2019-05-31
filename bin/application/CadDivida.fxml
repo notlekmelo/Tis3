@@ -18,7 +18,7 @@
             <ImageView fitHeight="339.0" fitWidth="519.0" layoutX="128.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="444.0" fitWidth="551.0" layoutX="52.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../R.png" />
+                  <Image url="@R.png" />
                </image>
             </ImageView>
             <Button layoutX="1546.0" layoutY="881.0" mnemonicParsing="false" onMouseClicked="#regDivida" prefHeight="60.0" prefWidth="251.0" text="Salvar">

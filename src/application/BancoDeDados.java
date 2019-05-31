@@ -120,7 +120,7 @@ public class BancoDeDados {
 			this.resultset = this.statement.executeQuery(querry);
 			while (this.resultset.next()) {
 				retorno = retorno + this.resultset.getString("mensagem") + " em " + this.resultset.getString("dataHist")
-						+ "\n";
+				+ "\n";
 			}
 			return retorno;
 
@@ -164,6 +164,24 @@ public class BancoDeDados {
 			System.out.println("Erro: " + e.getMessage());
 		}
 		return 0;
+	}
+
+	public String getPagParc(String iddivida) {
+		try {
+			String paga = "Status da dívida: Paga";
+			this.statement = this.connection.createStatement();
+			String querry = "SELECT * from parcela where divAssoc = '" + iddivida + "';";
+			this.resultset = this.statement.executeQuery(querry);
+			while (this.resultset.next()) {
+				if (!this.resultset.getString("status").equals("Total")) {
+					paga = "Status da dívida: Em andamento";
+				}
+			}
+			return paga;
+		} catch (Exception e) {
+			System.out.println("Erro: " + e.getMessage());
+		}
+		return "Não foi possível verificar o status da dívida";
 	}
 
 	public String getInfDiv(String op1, String op2) {
@@ -486,7 +504,7 @@ public class BancoDeDados {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 			if (valor < 0) {
 				String querry = "update parcela set status = 'Total'" + " where idparcela = " + getInfParc("idparcela")
-						+ ";";
+				+ ";";
 				this.statement.executeUpdate(querry);
 			} else {
 				String querry = "update parcela set status = 'Parcial' , valorPago = '" + valor + "' where idparcela = "
@@ -538,14 +556,14 @@ public class BancoDeDados {
 
 	public void gerarPdfCli(String id) {
 		try {
-//			this.statement = this.connection.createStatement();
-//			String parc = "SELECT * from parcela inner join divida on parcela.divAssoc = divida.iddivida where idCli = "+id+"";
-//			this.resultset = this.statement.executeQuery(parc);
-//			ArrayList<String> result = new ArrayList<String>();
-//			while (this.resultset.next())
-//				result.add("Valor total: R$" + this.resultset.getString("valorTotal") + "----Valor pago: R$"
-//						+ this.resultset.getString("valorPago") + "-----Status: " + this.resultset.getString("status"));
-//			int tam = result.size();
+			//			this.statement = this.connection.createStatement();
+			//			String parc = "SELECT * from parcela inner join divida on parcela.divAssoc = divida.iddivida where idCli = "+id+"";
+			//			this.resultset = this.statement.executeQuery(parc);
+			//			ArrayList<String> result = new ArrayList<String>();
+			//			while (this.resultset.next())
+			//				result.add("Valor total: R$" + this.resultset.getString("valorTotal") + "----Valor pago: R$"
+			//						+ this.resultset.getString("valorPago") + "-----Status: " + this.resultset.getString("status"));
+			//			int tam = result.size();
 			this.statement = this.connection.createStatement();
 			String querry = "select * from cliente where idCli ="+id+";";
 			this.resultset = this.statement.executeQuery(querry);
@@ -553,7 +571,7 @@ public class BancoDeDados {
 			PdfWriter.getInstance(document,
 					new FileOutputStream(""+System.getProperty("user.home")+"\\Desktop\\Cliente--" + id + ".pdf"));
 			document.open();
-			Image image = Image.getInstance("cabecalho.png");
+			Image image = Image.getInstance("src/application/cabecalho.png");
 			image.setAlignment(Element.ALIGN_CENTER);
 			document.add(image);
 			PdfPTable tabela = new PdfPTable(1);
@@ -561,7 +579,6 @@ public class BancoDeDados {
 			PdfPCell parcela = new PdfPCell(new Paragraph("Parcelas"));
 			PdfPCell divida = new PdfPCell(new Paragraph("Dívida"));
 			divida.setHorizontalAlignment(Element.ALIGN_CENTER);
-			this.resultset.beforeFirst();
 			if (this.resultset.next()) {
 				cabecalho.setHorizontalAlignment(Element.ALIGN_CENTER);
 				parcela.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -580,22 +597,20 @@ public class BancoDeDados {
 					+ "inner join funcionario on divida.idFunc = funcionario.idFunc\r\n" + "where cliente.idCli =" + id
 					+ ";";
 			this.resultset = this.statement.executeQuery(div);
-
 			this.resultset.beforeFirst();
-			while (this.resultset.next()) {
+
+			while(this.resultset.next()) {
+				ResultSet aux = this.resultset;
 				tabela.addCell(divida);
-				tabela.addCell("ID dívida: " + this.resultset.getString("iddivida") + "");
+				String idDiv = this.resultset.getString("iddivida");
+				tabela.addCell("ID dívida: " +  idDiv);
 				tabela.addCell("Responsável: " + this.resultset.getString("nomeFunc") + "");
 				tabela.addCell("Devedor: " + this.resultset.getString("nomeDev") + "");
 				tabela.addCell("Tipo da dívida: " + this.resultset.getString("tipoDiv") + "");
 				tabela.addCell("Forma de pagamento: " + this.resultset.getString("formaPag") + "");
 				tabela.addCell("Valor total: " + this.resultset.getString("valorDiv") + "");
-//				if (tam > 0) {
-//					tabela.addCell("Número de parcelas: " + tam + "");
-//					tabela.addCell(parcela);
-//					for (int i = 0; i < result.size(); i++)
-//						tabela.addCell("" + result.get(i) + "");
-//				}
+				tabela.addCell(getPagParc(idDiv));
+				this.resultset = aux;
 			}
 			document.add(tabela);
 			document.close();
@@ -625,7 +640,7 @@ public class BancoDeDados {
 			PdfWriter.getInstance(document,
 					new FileOutputStream(""+System.getProperty("user.home")+"\\Desktop\\Divida--" + id + ".pdf"));
 			document.open();
-			Image image = Image.getInstance("cabecalho.png");
+			Image image = Image.getInstance("src/application/cabecalho.png");
 			image.setAlignment(Element.ALIGN_CENTER);
 			document.add(image);
 			if (this.resultset.next()) {
@@ -667,14 +682,14 @@ public class BancoDeDados {
 
 	public void gerarPdfDev(String id) {
 		try {
-//			this.statement = this.connection.createStatement();
-//			String parc = "SELECT * from parcela inner join divida on parcela.divAssoc = divida.iddivida where idCli = "+id+"";
-//			this.resultset = this.statement.executeQuery(parc);
-//			ArrayList<String> result = new ArrayList<String>();
-//			while (this.resultset.next())
-//				result.add("Valor total: R$" + this.resultset.getString("valorTotal") + "----Valor pago: R$"
-//						+ this.resultset.getString("valorPago") + "-----Status: " + this.resultset.getString("status"));
-//			int tam = result.size();
+			//			this.statement = this.connection.createStatement();
+			//			String parc = "SELECT * from parcela inner join divida on parcela.divAssoc = divida.iddivida where idCli = "+id+"";
+			//			this.resultset = this.statement.executeQuery(parc);
+			//			ArrayList<String> result = new ArrayList<String>();
+			//			while (this.resultset.next())
+			//				result.add("Valor total: R$" + this.resultset.getString("valorTotal") + "----Valor pago: R$"
+			//						+ this.resultset.getString("valorPago") + "-----Status: " + this.resultset.getString("status"));
+			//			int tam = result.size();
 			this.statement = this.connection.createStatement();
 			String querry = "select * from devedor where idDev ="+id+";";
 			this.resultset = this.statement.executeQuery(querry);
@@ -682,7 +697,7 @@ public class BancoDeDados {
 			PdfWriter.getInstance(document,
 					new FileOutputStream(""+System.getProperty("user.home")+"\\Desktop\\Devedor--" + id + ".pdf"));
 			document.open();
-			Image image = Image.getInstance("cabecalho.png");
+			Image image = Image.getInstance("src/application/cabecalho.png");
 			image.setAlignment(Element.ALIGN_CENTER);
 			document.add(image);
 			PdfPTable tabela = new PdfPTable(1);
@@ -705,24 +720,22 @@ public class BancoDeDados {
 			String div = "select cliente.*, devedor.*, divida.*, funcionario.nomeFunc from divida \r\n"
 					+ "inner join cliente on divida.idCli = cliente.idCli\r\n"
 					+ "inner join devedor on divida.idDev = devedor.idDev\r\n"
-					+ "inner join funcionario on divida.idFunc = funcionario.idFunc\r\n" + "where cliente.idCli =" + id
+					+ "inner join funcionario on divida.idFunc = funcionario.idFunc\r\n" + "where devedor.idDev =" + id
 					+ ";";
 			this.resultset = this.statement.executeQuery(div);
 			this.resultset.beforeFirst();
 			while (this.resultset.next()) {
+				ResultSet aux = this.resultset;
 				tabela.addCell(divida);
-				tabela.addCell("ID dívida: " + this.resultset.getString("iddivida") + "");
+				String idDiv = this.resultset.getString("iddivida");
+				tabela.addCell("ID dívida: " +  idDiv);
 				tabela.addCell("Responsável: " + this.resultset.getString("nomeFunc") + "");
 				tabela.addCell("Devedor: " + this.resultset.getString("nomeDev") + "");
 				tabela.addCell("Tipo da dívida: " + this.resultset.getString("tipoDiv") + "");
 				tabela.addCell("Forma de pagamento: " + this.resultset.getString("formaPag") + "");
 				tabela.addCell("Valor total: " + this.resultset.getString("valorDiv") + "");
-//				if (tam > 0) {
-//					tabela.addCell("Número de parcelas: " + tam + "");
-//					tabela.addCell(parcela);
-//					for (int i = 0; i < result.size(); i++)
-//						tabela.addCell("" + result.get(i) + "");
-//				}
+				tabela.addCell(getPagParc(idDiv));
+				this.resultset = aux;
 			}
 			document.add(tabela);
 			document.close();

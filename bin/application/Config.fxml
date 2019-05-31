@@ -13,7 +13,7 @@
          <children>
             <ImageView fitHeight="501.0" fitWidth="1089.0" layoutX="406.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Russi_e_Pereira_Sociedade_de_Advogados.png" />
+                  <Image url="@Russi_e_Pereira_Sociedade_de_Advogados.png" />
                </image>
             </ImageView>
             <Button layoutX="406.0" layoutY="678.0" mnemonicParsing="false" onMouseClicked="#alteraSenha" prefHeight="132.0" prefWidth="387.0" style="-fx-background-color: #b2222d;" text="Alterar Senha" textFill="WHITE">
@@ -28,7 +28,7 @@
             </Button>
             <ImageView fitHeight="64.0" fitWidth="74.0" layoutX="10.0" layoutY="14.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../seta.png" />
+                  <Image url="@seta.png" />
                </image>
             </ImageView>
          </children>

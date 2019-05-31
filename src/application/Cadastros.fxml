@@ -29,12 +29,12 @@
                </font></Button>
             <ImageView fitHeight="79.0" fitWidth="97.0" layoutX="14.0" onMouseClicked="#goBack" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../seta.png" />
+                  <Image url="@seta.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="491.0" fitWidth="1048.0" layoutX="426.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Russi_e_Pereira_Sociedade_de_Advogados.png" />
+                  <Image url="@Russi_e_Pereira_Sociedade_de_Advogados.png" />
                </image>
             </ImageView>
          </children>

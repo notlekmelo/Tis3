@@ -19,7 +19,7 @@
             </Button>
             <ImageView fitHeight="421.0" fitWidth="1001.0" layoutX="450.0" layoutY="35.0" preserveRatio="true">
                <image>
-                  <Image url="@../../Russi_e_Pereira_Sociedade_de_Advogados.png" />
+                  <Image url="@Russi_e_Pereira_Sociedade_de_Advogados.png" />
                </image>
             </ImageView>
             <Button layoutX="450.0" layoutY="771.0" mnemonicParsing="false" onMouseClicked="#pesquisas" prefHeight="136.0" prefWidth="1000.0" style="-fx-background-color: #b2222d;" text="Pesquisar" textAlignment="CENTER" textFill="WHITE">
@@ -38,9 +38,15 @@
                </font></Label>
             <ImageView fitHeight="55.0" fitWidth="50.0" layoutX="1661.0" layoutY="31.0" onMouseClicked="#config" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../engrenagem.png" />
+                  <Image url="@engrenagem.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="1836.0" layoutY="939.0" onMouseEntered="#writeCopy" onMouseExited="#erase" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@copyright.jpg" />
+               </image>
+            </ImageView>
+            <Label fx:id="lb" layoutX="1070.0" layoutY="939.0" prefHeight="50.0" prefWidth="760.0" text="Software desenvolvido para Russi e Pereira Sociedade de Advogados em 2019 pelos alunos do 3º período de Engenharia de Software - Puc Minas - Gabriel Nascimento, Kelton Melo, Lucas Fernandes e Marlon Henrique" visible="false" wrapText="true" />
          </children>
       </Pane>
    </children>

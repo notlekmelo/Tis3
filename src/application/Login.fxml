@@ -30,7 +30,7 @@
                   <Cursor fx:constant="S_RESIZE" />
                </cursor>
                <image>
-                  <Image url="@../../Russi_e_Pereira_Sociedade_de_Advogados.png" />
+                  <Image url="@Russi_e_Pereira_Sociedade_de_Advogados.png" />
                </image>
                <styleClass>
                   <String fx:value="visible-sm" />

@@ -14,7 +14,7 @@ public class SampleController implements Initializable{
 	
 
 	@FXML
-	private Label userLog = new Label();
+	private Label userLog, lb;
 
 	@FXML
     void writeUser(MouseEvent event) throws SQLException {
@@ -52,6 +52,16 @@ public class SampleController implements Initializable{
 	private void config(MouseEvent event) {
 		Main janela = new Main();
 		janela.loadScene("Config.fxml","Configurações");
+	}
+	
+	@FXML
+	private void writeCopy(MouseEvent e) {
+		lb.setVisible(true);
+	}
+	
+	@FXML
+	private void erase(MouseEvent e) {
+		lb.setVisible(false);
 	}
 	
 	@Override
